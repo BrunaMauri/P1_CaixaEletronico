@@ -1,0 +1,15 @@
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\bin\Debug\Proj_CaixaEletronico.exe.config
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\bin\Debug\Proj_CaixaEletronico.exe
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\bin\Debug\Proj_CaixaEletronico.pdb
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\bin\Debug\System.Data.SQLite.dll
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\bin\Debug\System.Data.SQLite.xml
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.csprojAssemblyReference.cache
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.br.com.logatti.view.Form_Banco.resources
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.br.com.logatti.view.Main.resources
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.csproj.GenerateResource.cache
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.csproj.CoreCompileInputs.cache
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.csproj.CopyComplete
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.exe
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.pdb
+C:\Users\bmauri2\source\repos\Proj_CaixaEletronico\Proj_CaixaEletronico\obj\Debug\Proj_CaixaEletronico.br.com.logatti.view.Form_Cliente.resources
