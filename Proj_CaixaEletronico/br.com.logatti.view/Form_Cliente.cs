@@ -1,9 +1,12 @@
-﻿using Proj_CaixaEletronico.br.com.logatti.connection;
+﻿using Microsoft.Data.Sqlite;
+using Proj_CaixaEletronico.br.com.logatti.connection;
 using Proj_CaixaEletronico.br.com.logatti.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,66 +17,88 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
 {
     public partial class Form_Cliente : Form
     {
+
+        public SQLiteConnection SQLiteConnection { get; private set; }
+
+
+
         public Form_Cliente()
         {
             InitializeComponent();
+
+            cbBanco.DataSource = ConnectionSqlite.GetBancoAll();
+            cbBanco.ValueMember = "idBanco";
+            cbBanco.DisplayMember = "descricao";
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+
+
+            Conta conta = new Conta()
+            {
+                NumConta = int.Parse(txtCon.Text),
+                NumAgencia = txtAgencia.Text,
+                Saldo = double.Parse(txtSaldo.Text),
+                IdClient = int.Parse(txtId.Text),
+                IdConta = int.Parse(txtIdConta.Text),
+                banco = new Banco()
+                {
+                    IdBanco = int.Parse(cbBanco.SelectedValue.ToString()),
+                    NomeBanco = cbBanco.Text
+                }
+
+            };
 
             Cliente c = new Cliente()
 
             {
                 IdCliente = int.Parse(txtId.Text),
                 Celular = int.Parse(txtCelular.Text),
-                NumConta = int.Parse(txtConta.Text),
+                IdConta = int.Parse(txtIdConta.Text),
+
                 Nome = txtNome.Text,
-                Saldo = double.Parse(txtSaldo.Text),
+
                 Telefone = int.Parse(txtTelefone.Text),
-                Agencia = txtAgencia.Text,
+
                 CPF = txtCPF.Text,
                 Endereco = txtEndereco.Text,
+                
 
-                banco = new Banco()
-                {
-                    Id = int.Parse(cbBanco.SelectedValue.ToString()),
-                    NomeAgencia = cbBanco.Text
-                }
             };
+
+
+
+
+
 
             //Inserir dados 
 
 
             //Inserir dados
-            CreateCliente(cliente);
+            CreateCliente(c);
+            CreateConta(conta);
+
             //Atualizar dados na grid
             LoadGridCliente();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_Cliente_Load(object sender, EventArgs e)
         {
-            LoadComboCidade();
             LoadGridCliente();
         }
 
-        private void LoadComboCidade()
-        {
-            cboCidade.DataSource = ConnectionSQLite.GetCidadeAll();
-            cboCidade.ValueMember = "id";
-            cboCidade.DisplayMember = "nome";
-        }
 
         private void LoadGridCliente()
         {
-            dgvCliente.DataSource = ConnectionSQLite.GetClienteAll();
+            dgvClientes.DataSource = ConnectionSqlite.GetClienteAll();
         }
 
         private void CreateCliente(Cliente cliente)
         {
             try
             {
-                ConnectionSQLite.Add(cliente);
+                ConnectionSqlite.Add(cliente);
             }
             catch (Exception ex)
             {
@@ -81,10 +106,31 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             }
         }
 
-        private void btnChamar_Click(object sender, EventArgs e)
+
+        private void CreateConta(Conta cont)
         {
-            TesteChamada t = new TesteChamada();
-            t.Show();
+            try
+            {
+                ConnectionSqlite.Add(cont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERRO: " + ex.Message);
+            }
         }
+        private void CreateBanco(Banco banc)
+        {
+            try
+            {
+                ConnectionSqlite.Add(banc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERRO: " + ex.Message);
+            }
+        }
+
     }
+
+
 }

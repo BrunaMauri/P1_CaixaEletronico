@@ -8,8 +8,10 @@ namespace Proj_CaixaEletronico.br.com.logatti.model
 {
     class Banco
     {
-        public int Id { get; set; }
-        public string NomeAgencia { get; set; }
+        public int IdBanco { get; set; }
+        
 
+        public string NomeBanco { get; set; }
+        public Banco banco { get; set; }
     }
 }

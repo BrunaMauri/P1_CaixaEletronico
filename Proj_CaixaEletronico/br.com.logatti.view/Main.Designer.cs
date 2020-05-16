@@ -32,6 +32,7 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarBancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caixaEletronicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,8 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrarBancoToolStripMenuItem,
-            this.cadastrarClienteToolStripMenuItem});
+            this.cadastrarClienteToolStripMenuItem,
+            this.caixaEletronicoToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -67,6 +69,13 @@
             this.cadastrarClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cadastrarClienteToolStripMenuItem.Text = "Cadastrar Cliente";
             this.cadastrarClienteToolStripMenuItem.Click += new System.EventHandler(this.cadastrarClienteToolStripMenuItem_Click);
+            // 
+            // caixaEletronicoToolStripMenuItem
+            // 
+            this.caixaEletronicoToolStripMenuItem.Name = "caixaEletronicoToolStripMenuItem";
+            this.caixaEletronicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.caixaEletronicoToolStripMenuItem.Text = "Caixa Eletronico";
+            this.caixaEletronicoToolStripMenuItem.Click += new System.EventHandler(this.caixaEletronicoToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -90,5 +99,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarBancoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem caixaEletronicoToolStripMenuItem;
     }
 }

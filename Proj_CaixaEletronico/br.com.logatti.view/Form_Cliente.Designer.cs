@@ -1,4 +1,6 @@
-﻿namespace Proj_CaixaEletronico.br.com.logatti.view
+﻿using System;
+
+namespace Proj_CaixaEletronico.br.com.logatti.view
 {
     partial class Form_Cliente
     {
@@ -33,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.txtCPF = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.txtConta = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtAgencia = new System.Windows.Forms.TextBox();
             this.txtCon = new System.Windows.Forms.TextBox();
@@ -53,6 +53,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.cbBanco = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIdConta = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,15 +102,6 @@
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Telefone:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(84, 148);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Conta:";
             // 
             // label7
             // 
@@ -200,13 +193,6 @@
             this.txtTelefone.Size = new System.Drawing.Size(166, 20);
             this.txtTelefone.TabIndex = 17;
             // 
-            // txtConta
-            // 
-            this.txtConta.Location = new System.Drawing.Point(127, 145);
-            this.txtConta.Name = "txtConta";
-            this.txtConta.Size = new System.Drawing.Size(166, 20);
-            this.txtConta.TabIndex = 18;
-            // 
             // txtEndereco
             // 
             this.txtEndereco.Location = new System.Drawing.Point(127, 168);
@@ -259,12 +245,32 @@
             this.cbBanco.Name = "cbBanco";
             this.cbBanco.Size = new System.Drawing.Size(121, 21);
             this.cbBanco.TabIndex = 26;
+            Form_Cliente form_Cliente = this;
+       //     form_Cliente.cbBanco.SelectedIndexChanged += new System.EventHandler(this.cbBanco_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(588, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(19, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Id:";
+            // 
+            // txtIdConta
+            // 
+            this.txtIdConta.Location = new System.Drawing.Point(613, 37);
+            this.txtIdConta.Name = "txtIdConta";
+            this.txtIdConta.Size = new System.Drawing.Size(166, 20);
+            this.txtIdConta.TabIndex = 28;
             // 
             // Form_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 493);
+            this.Controls.Add(this.txtIdConta);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cbBanco);
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.label12);
@@ -272,7 +278,6 @@
             this.Controls.Add(this.txtCon);
             this.Controls.Add(this.txtAgencia);
             this.Controls.Add(this.txtEndereco);
-            this.Controls.Add(this.txtConta);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCPF);
             this.Controls.Add(this.txtCelular);
@@ -284,7 +289,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -298,6 +302,15 @@
 
         }
 
+        
+
+
+
+        //  private void cbBanco_SelectedIndexChanged(object sender, EventArgs e)
+        //   {
+        //      throw new NotImplementedException();
+        //   }
+
         #endregion
 
         private System.Windows.Forms.Label label1;
@@ -305,7 +318,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -317,7 +329,6 @@
         private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.TextBox txtTelefone;
-        private System.Windows.Forms.TextBox txtConta;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.TextBox txtAgencia;
         private System.Windows.Forms.TextBox txtCon;
@@ -325,5 +336,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.ComboBox cbBanco;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtIdConta;
+        private EventHandler cbBanco_SelectedIndexChanged;
     }
 }

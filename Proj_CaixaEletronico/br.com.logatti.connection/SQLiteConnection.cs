@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using javax.swing;
 using Proj_CaixaEletronico.br.com.logatti.model;
 
 namespace Proj_CaixaEletronico.br.com.logatti.connection
@@ -67,7 +68,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.connection
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS " + tableName + " (idCliente int, nome varchar(50), celular int, cpf varchar(50), telefone int, endereco varchar(50), agencia varchar(50), conta int, saldo double, status boolean, idbanco int)";
+                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS " + tableName + " (idCliente int, nome varchar(50), celular int, cpf varchar(50), telefone int, endereco varchar(50), agencia varchar(50), idConta int, saldo double, status boolean, idbanco int)";
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -83,55 +84,86 @@ namespace Proj_CaixaEletronico.br.com.logatti.connection
         //Inserindo os dados na tabela banco
         public static void Add(Banco banco)
         {
+            try
+            {
+                using (var cmd = DbConnection().CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO Banco (idBanco, descricao) values (@IdBanco, @Descricao)";
+                    cmd.Parameters.AddWithValue("@IdBanco", banco.IdBanco);
+                    cmd.Parameters.AddWithValue("@Descricao", banco.NomeBanco);
+
+
+                    cmd.ExecuteNonQuery();
+                    JOptionPane.showMessageDialog(null, "Banco " + banco.NomeBanco + " inserido com o ÍD "+ banco.IdBanco);
+                }
+
+            }
+            catch (Exception)
+            {
+                JOptionPane.showMessageDialog(null, "Informações inválidas, revise as informações!" +
+                    "\n *O Id não pode ser igual a um ID existente.");
+
+            }
+        }
+
+        //Inserindo os dados na tabela banco
+        public static void Add(Conta conta)
+        {
 
             using (var cmd = DbConnection().CreateCommand())
             {
-                cmd.CommandText = "INSERT INTO Banco (id, descricao) values (@Id, @Descricao)";
-                cmd.Parameters.AddWithValue("@Id", banco.Id);
-                cmd.Parameters.AddWithValue("@Descricao", banco.NomeAgencia);
-          
+                cmd.CommandText = "INSERT INTO Conta (idConta, idCliente, numConta, numAgencia, saldo, idBanco) values (@IdConta, @IdCliente, @NumConta, @NumAgencia, @Saldo, @IdBanco)";
+                cmd.Parameters.AddWithValue("@IdConta", conta.IdConta);
+                cmd.Parameters.AddWithValue("@NumConta", conta.NumConta);
+                cmd.Parameters.AddWithValue("@IdCliente", conta.IdClient);
+                cmd.Parameters.AddWithValue("@NumAgencia", conta.NumAgencia);
+
+                cmd.Parameters.AddWithValue("@Saldo", conta.Saldo);
+
+                cmd.Parameters.AddWithValue("@IdBanco", conta.banco.IdBanco);
 
                 cmd.ExecuteNonQuery();
             }
         }
 
-        //Inserindo os dados na tabela Conta
-        public static void Add(Conta conta, Cliente cliente)
+
+
+        //Inserindo os dados na tabela Cliente
+        public static void Add(Cliente cliente)
         {
 
             using (var cmd = DbConnection().CreateCommand())
             {
-                cmd.CommandText = "INSERT INTO Cliente (idCliente, nome, celular, cpf, telefone, endereco, agencia, conta, saldo, status, idbanco) values (@IdCliente, @Nome, @Celular, @Cpf, @Telefone, @Endereco, @Agencia, @Conta, @Saldo, @Idbanco)";
-                cmd.Parameters.AddWithValue("@IdBanco", conta.Id);
-                cmd.Parameters.AddWithValue("@Agencia", conta.Agencia);
-                cmd.Parameters.AddWithValue("@Saldo", conta.Saldo);
-                cmd.Parameters.AddWithValue("@Conta", conta.NumConta);
-                cmd.Parameters.AddWithValue("@Banco", conta.banco);
-                cmd.Parameters.AddWithValue("@IdCliente", cliente.Id);
+                cmd.CommandText = "INSERT INTO Cliente (idCliente, nome, celular, cpf, telefone, endereco, idConta) values (@IdCliente, @Nome, @Celular, @Cpf, @Telefone, @Endereco, @IdConta)";
+
+                cmd.Parameters.AddWithValue("@IdCliente", cliente.IdCliente);
                 cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
                 cmd.Parameters.AddWithValue("@Celular", cliente.Celular);
                 cmd.Parameters.AddWithValue("@Cpf", cliente.CPF);
                 cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
-                cmd.Parameters.AddWithValue("@Conta", cliente.conta);
+
                 cmd.Parameters.AddWithValue("@Endereco", cliente.Endereco);
+                cmd.Parameters.AddWithValue("@IdConta", cliente.IdConta);
+               
+                
 
                 cmd.ExecuteNonQuery();
             }
          
             }
-        
+
 
 
 
         //Consultando os dados na tabela banco
-        public static DataTable GetAll()
+        public static DataTable GetBancoAll()
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
 
             using (var cmd = DbConnection().CreateCommand())
             {
-                cmd.CommandText = "select id, descricao from Banco";
+                cmd.CommandText = "select idBanco, descricao from Banco";
                 da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                 da.Fill(dt);
                 return dt;
@@ -139,5 +171,111 @@ namespace Proj_CaixaEletronico.br.com.logatti.connection
         }
 
 
+        //Consultando os dados na tabela cliente
+        public static DataTable GetClienteCAll()
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "select idCliente ID, nome Nome from Banco";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+
+        public static DataTable GetBancoAllGetBancoAll()
+        {
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = null;
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "select idBanco ID, descricao Banco from Banco";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public static DataTable GetClienteAll()
+        {
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = null;
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "select a.idCliente ID, a.nome Cliente, a.celular Celular, a.cpf CPF, a.telefone Telefone, a.endereco Endereço, b.numConta Conta, b.numAgencia Agencia, b.saldo Saldo, b.idBanco Banco from Cliente as a left join conta as b on a.idConta = b.idConta";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
+        public static DataTable GetClienteBAll(int id)
+        {
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = null;
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "select a.nome Cliente, a.cpf CPF, b.numConta Conta, b.numAgencia Agencia, b.idBanco Banco, b.saldo Saldo from Cliente as a left join conta as b on a.idConta = b.idConta where b.idCliente =" +id+ ";";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
+        public static DataTable GetAtualizaSaldo(double valor, int id)
+        {
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = null;
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "UPDATE conta SET saldo = " + valor + " WHERE idConta in (select idConta from Cliente where idCliente =" +id+");";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
+        public static DataTable GetSaque(double valor, int id)
+        {
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = null;
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "UPDATE conta SET saldo = saldo - " + valor + " WHERE idConta in (select idConta from Cliente where idCliente =" + id + ");";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public static DataTable GetDep(double valor, int id)
+        {
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = null;
+
+            using (var cmd = DbConnection().CreateCommand())
+            {
+                cmd.CommandText = "UPDATE conta SET saldo = saldo + " + valor + " WHERE idConta in (select idConta from Cliente where idCliente =" + id + ");";
+                da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
     }
 }
+
+
+

@@ -28,5 +28,23 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             Form_Cliente fc = new Form_Cliente();
             fc.ShowDialog();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Cliente fc = new Form_Cliente();
+            fc.ShowDialog();
+        }
+
+        private void clienteToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form_Cliente fc = new Form_Cliente();
+            fc.ShowDialog();
+        }
+
+        private void caixaEletronicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CaixaEletronico ce = new CaixaEletronico();
+            ce.ShowDialog();
+        }
     }
 }

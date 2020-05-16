@@ -46,9 +46,15 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             ConnectionSqlite.Add(banco);
         }
 
+        private void Add(Conta conta)
+        {
+            ConnectionSqlite.Add(conta);
+        }
+
+
         private DataTable GetAll()
         {
-            return ConnectionSqlite.GetAll();
+            return ConnectionSqlite.GetBancoAll();
         }
 
         private Banco GetBanco()
@@ -60,8 +66,8 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
         {
             Banco b = new Banco();
 
-            b.Id = int.Parse(txtId.Text);
-            b.NomeAgencia = txtDescricao.Text;
+            b.IdBanco = int.Parse(txtId.Text);
+            b.NomeBanco = txtDescricao.Text;
 
             return b;
         }
