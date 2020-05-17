@@ -13,11 +13,11 @@ namespace Proj_CaixaEletronico.br.com.logatti.model
      
         public string Nome { get; set; }
 
-        public int Celular { get; set; }
+        public string Celular { get; set; }
 
         public string CPF { get; set; }
 
-        public int Telefone { get; set; }
+        public string Telefone { get; set; }
 
 
         public string Endereco { get; set; }

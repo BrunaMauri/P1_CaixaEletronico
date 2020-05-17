@@ -43,11 +43,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             this.btnInserir = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtCelular = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
-            this.txtAgencia = new System.Windows.Forms.TextBox();
             this.txtCon = new System.Windows.Forms.TextBox();
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -55,6 +51,10 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             this.cbBanco = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtIdConta = new System.Windows.Forms.TextBox();
+            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.txtAgencia = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,40 +172,12 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             this.txtNome.Size = new System.Drawing.Size(166, 20);
             this.txtNome.TabIndex = 14;
             // 
-            // txtCelular
-            // 
-            this.txtCelular.Location = new System.Drawing.Point(127, 72);
-            this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(166, 20);
-            this.txtCelular.TabIndex = 15;
-            // 
-            // txtCPF
-            // 
-            this.txtCPF.Location = new System.Drawing.Point(127, 96);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(166, 20);
-            this.txtCPF.TabIndex = 16;
-            // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(127, 120);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(166, 20);
-            this.txtTelefone.TabIndex = 17;
-            // 
             // txtEndereco
             // 
             this.txtEndereco.Location = new System.Drawing.Point(127, 168);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(166, 20);
+            this.txtEndereco.Size = new System.Drawing.Size(260, 20);
             this.txtEndereco.TabIndex = 19;
-            // 
-            // txtAgencia
-            // 
-            this.txtAgencia.Location = new System.Drawing.Point(616, 57);
-            this.txtAgencia.Name = "txtAgencia";
-            this.txtAgencia.Size = new System.Drawing.Size(121, 20);
-            this.txtAgencia.TabIndex = 20;
             // 
             // txtCon
             // 
@@ -224,7 +196,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(578, 21);
+            this.label12.Location = new System.Drawing.Point(578, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 13);
             this.label12.TabIndex = 24;
@@ -245,8 +217,6 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             this.cbBanco.Name = "cbBanco";
             this.cbBanco.Size = new System.Drawing.Size(121, 21);
             this.cbBanco.TabIndex = 26;
-            Form_Cliente form_Cliente = this;
-       //     form_Cliente.cbBanco.SelectedIndexChanged += new System.EventHandler(this.cbBanco_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -259,16 +229,55 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             // 
             // txtIdConta
             // 
-            this.txtIdConta.Location = new System.Drawing.Point(613, 37);
+            this.txtIdConta.Location = new System.Drawing.Point(611, 32);
             this.txtIdConta.Name = "txtIdConta";
-            this.txtIdConta.Size = new System.Drawing.Size(166, 20);
+            this.txtIdConta.Size = new System.Drawing.Size(126, 20);
             this.txtIdConta.TabIndex = 28;
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Location = new System.Drawing.Point(127, 71);
+            this.txtCelular.Mask = "(99) 0000-0000";
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(166, 20);
+            this.txtCelular.TabIndex = 29;
+            this.txtCelular.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Location = new System.Drawing.Point(127, 98);
+            this.txtCPF.Mask = "000.000.000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(166, 20);
+            this.txtCPF.TabIndex = 30;
+            this.txtCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtCPF_MaskInputRejected);
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(127, 124);
+            this.txtTelefone.Mask = "(99) 0000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(166, 20);
+            this.txtTelefone.TabIndex = 31;
+            // 
+            // txtAgencia
+            // 
+            this.txtAgencia.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
+            this.txtAgencia.Location = new System.Drawing.Point(616, 57);
+            this.txtAgencia.Mask = "0000-0";
+            this.txtAgencia.Name = "txtAgencia";
+            this.txtAgencia.Size = new System.Drawing.Size(121, 20);
+            this.txtAgencia.TabIndex = 32;
             // 
             // Form_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 493);
+            this.Controls.Add(this.txtAgencia);
+            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtCPF);
+            this.Controls.Add(this.txtCelular);
             this.Controls.Add(this.txtIdConta);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbBanco);
@@ -276,11 +285,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.txtCon);
-            this.Controls.Add(this.txtAgencia);
             this.Controls.Add(this.txtEndereco);
-            this.Controls.Add(this.txtTelefone);
-            this.Controls.Add(this.txtCPF);
-            this.Controls.Add(this.txtCelular);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnInserir);
@@ -326,11 +331,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtCelular;
-        private System.Windows.Forms.TextBox txtCPF;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtEndereco;
-        private System.Windows.Forms.TextBox txtAgencia;
         private System.Windows.Forms.TextBox txtCon;
         private System.Windows.Forms.TextBox txtSaldo;
         private System.Windows.Forms.Label label12;
@@ -339,5 +340,9 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIdConta;
         private EventHandler cbBanco_SelectedIndexChanged;
+        private System.Windows.Forms.MaskedTextBox txtCelular;
+        private System.Windows.Forms.MaskedTextBox txtCPF;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
+        private System.Windows.Forms.MaskedTextBox txtAgencia;
     }
 }

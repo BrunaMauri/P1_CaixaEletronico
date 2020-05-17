@@ -68,7 +68,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.connection
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS " + tableName + " (idCliente int, nome varchar(50), celular int, cpf varchar(50), telefone int, endereco varchar(50), agencia varchar(50), idConta int, saldo double, status boolean, idbanco int)";
+                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS " + tableName + " (idCliente int, nome varchar(50), celular varchar(50), cpf varchar(50), telefone varchar(50), endereco varchar(50), agencia varchar(50), idConta int, saldo double, status boolean, idbanco int)";
                     cmd.ExecuteNonQuery();
                 }
             }

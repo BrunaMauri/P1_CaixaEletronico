@@ -54,12 +54,12 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
 
             {
                 IdCliente = int.Parse(txtId.Text),
-                Celular = int.Parse(txtCelular.Text),
+                Celular = txtCelular.Text,
                 IdConta = int.Parse(txtIdConta.Text),
 
                 Nome = txtNome.Text,
 
-                Telefone = int.Parse(txtTelefone.Text),
+                Telefone = txtTelefone.Text,
 
                 CPF = txtCPF.Text,
                 Endereco = txtEndereco.Text,
@@ -130,6 +130,15 @@ namespace Proj_CaixaEletronico.br.com.logatti.view
             }
         }
 
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 
 

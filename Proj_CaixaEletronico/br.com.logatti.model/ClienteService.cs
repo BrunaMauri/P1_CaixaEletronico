@@ -12,7 +12,7 @@ namespace Proj_CaixaEletronico.br.com.logatti.model
     public class ClienteService
     {
 
-        public void Add(int idCliente, string nome, double valor, string numAgencia, int celular, string cpf, int telefone, string endereco, int idconta)
+        public void Add(int idCliente, string nome, double valor, string numAgencia, string celular, string cpf, string telefone, string endereco, int idconta)
         {
             Cliente cl = new Cliente()
             {
